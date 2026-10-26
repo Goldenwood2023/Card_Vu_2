@@ -1,17 +1,19 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="vi" class="h-full">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>Danh Thiếp Điện Tử - Từ Anh Vũ (Golden Wood)</title>
     
-    <!-- Google Fonts: Montserrat for ultra-bold name & Plus Jakarta Sans for body -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
-    <!-- FontAwesome CDN for Icons -->
+    <!-- FontAwesome CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Tailwind CSS CDN (Must be loaded BEFORE tailwind.config script) -->
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- QRCode.js Library -->
@@ -22,14 +24,11 @@
             theme: {
                 extend: {
                     colors: {
-                        modern: {
-                            bg: '#09090B',
-                            card: '#121215',
-                            cardBorder: '#27272A',
-                            gold: '#F59E0B',
-                            amber: '#D97706',
-                            goldBright: '#FBBF24',
-                            goldLight: '#FEF3C7'
+                        gold: {
+                            400: '#FBBF24',
+                            500: '#F59E0B',
+                            600: '#D97706',
+                            700: '#B45309',
                         }
                     },
                     fontFamily: {
@@ -41,316 +40,304 @@
         }
     </script>
     <style>
+        * {
+            -webkit-tap-highlight-color: transparent;
+            box-sizing: border-box;
+        }
+        
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            background: #050505;
-            background-image: radial-gradient(circle at 50% 0%, #1f1a08 0%, #050505 75%);
-            min-height: 100vh;
+            background: #040405;
+            color: #F4F4F5;
         }
-        .modern-name {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 900;
-            letter-spacing: 0.03em;
-            text-shadow: 0 0 15px rgba(245, 158, 11, 0.35);
+
+        /* Desktop ambient background glow */
+        @media (min-width: 640px) {
+            body {
+                background-image: radial-gradient(circle at 50% 20%, #2a1f07 0%, #040405 70%);
+            }
         }
-        .phone-frame {
-            max-width: 420px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.9), 0 0 40px rgba(245, 158, 11, 0.15);
-            border-radius: 44px;
-            overflow: hidden;
-            background: #0D0D11;
-            position: relative;
-            border: 1px solid #27272A;
-        }
-        .btn-action {
-            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .btn-action:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px -4px rgba(245, 158, 11, 0.25);
-        }
-        .btn-action:active {
-            transform: scale(0.95);
-        }
+
         .gold-gradient-text {
-            background: linear-gradient(135deg, #FFF 0%, #FBBF24 50%, #D97706 100%);
+            background: linear-gradient(135deg, #FFF 0%, #FBBF24 40%, #D97706 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        .gold-gradient-btn {
-            background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+
+        .gold-border-glow {
+            box-shadow: 0 0 15px rgba(245, 158, 11, 0.2);
         }
-        .gold-gradient-btn:hover {
-            background: linear-gradient(135deg, #FBBF24 0%, #F59E0B 100%);
+
+        .btn-press {
+            transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+        }
+        .btn-press:active {
+            transform: scale(0.96);
+        }
+
+        /* Smooth scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.2);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #3f3f46;
+            border-radius: 4px;
         }
     </style>
 </head>
-<body class="flex items-center justify-center p-2 sm:p-6 min-h-screen">
+<body class="h-full flex items-center justify-center sm:py-6 sm:px-4">
 
-    <div class="phone-frame w-full min-h-[840px] flex flex-col justify-between my-auto relative text-slate-100 shadow-2xl">
-        
-        <!-- Header Top Bar (Phone Speaker Mockup) -->
-        <div class="w-full bg-black pt-3 pb-1 flex justify-center items-center z-30">
-            <div class="w-20 h-4 bg-zinc-900 rounded-full flex items-center justify-center gap-2 border border-zinc-800">
-                <div class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></div>
-                <div class="w-8 h-1.5 rounded-full bg-zinc-700"></div>
+    <!-- Main Container: Mobile full screen, Desktop smartphone mockup -->
+    <div class="w-full h-full sm:h-auto sm:max-w-[410px] sm:max-h-[880px] sm:min-h-[800px] bg-[#0A0A0D] sm:rounded-[40px] sm:border sm:border-zinc-800 sm:shadow-[0_25px_60px_-15px_rgba(0,0,0,0.9),0_0_30px_rgba(245,158,11,0.12)] flex flex-col justify-between overflow-hidden relative">
+
+        <!-- Optional Top Speaker Mockup (Desktop layout element) -->
+        <div class="hidden sm:flex w-full bg-black pt-2.5 pb-1 justify-center items-center shrink-0 z-30">
+            <div class="w-16 h-3 bg-zinc-900 rounded-full flex items-center justify-center gap-1.5 border border-zinc-800/80">
+                <div class="w-1.5 h-1.5 rounded-full bg-amber-500/80 animate-pulse"></div>
+                <div class="w-6 h-1 rounded-full bg-zinc-700"></div>
             </div>
         </div>
 
-        <!-- Top Info Header -->
-        <div class="px-5 pt-3 pb-3 bg-zinc-950 text-white flex justify-between items-center gap-2 z-20 border-b border-zinc-800/80">
-            <!-- Brand Logo & Name -->
-            <div class="flex items-center gap-2.5">
-                <!-- Isometric Cube SVG Logo -->
-                <div class="w-10 h-10 rounded-xl bg-[#fec006] flex items-center justify-center p-1 shadow-lg shadow-amber-500/10 shrink-0 border border-amber-400/30">
-                    <svg viewBox="0 0 100 100" class="w-full h-full text-amber-950" fill="none" stroke="currentColor" stroke-width="8" stroke-linejoin="round" stroke-linecap="round">
-                        <polygon points="50,5 92,28 92,72 50,95 8,72 8,28" />
-                        <line x1="50" y1="5" x2="50" y2="50" />
-                        <line x1="92" y1="28" x2="50" y2="50" />
-                        <line x1="8" y1="28" x2="50" y2="50" />
-                        <polygon points="50,30 72,42 50,54 28,42" stroke-width="6" fill="#fec006"/>
-                        <line x1="50" y1="54" x2="50" y2="72" stroke-width="6" />
-                        <line x1="72" y1="42" x2="72" y2="58" stroke-width="6" />
-                        <line x1="28" y1="42" x2="28" y2="58" stroke-width="6" />
-                        <line x1="28" y1="58" x2="50" y2="72" stroke-width="6" />
-                        <line x1="72" y1="58" x2="50" y2="72" stroke-width="6" />
-                    </svg>
-                </div>
-                <div>
-                    <h1 class="font-extrabold text-amber-400 tracking-wider text-sm leading-tight font-heading">GOLDEN WOOD</h1>
-                    <p class="text-[10px] text-zinc-400 font-medium tracking-widest uppercase">Nội Thất & Kiến Trúc</p>
-                </div>
-            </div>
-
-            <!-- Location Badge -->
-            <a href="https://maps.google.com/?q=45/84+Dân+Lập,+Lê+Chân,+Hải+Phòng" target="_blank" class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-zinc-900 hover:bg-zinc-800 text-zinc-300 transition-all border border-zinc-700/60 text-right">
-                <i class="fa-solid fa-location-dot text-amber-400 text-xs animate-bounce"></i>
-                <div class="text-[10px] leading-tight font-medium">
-                    <span class="block font-semibold text-white">45/84 Dân Lập</span>
-                    Lê Chân, Hải Phòng
-                </div>
-            </a>
-        </div>
-
-        <!-- Hero Banner Image -->
-        <div class="relative w-full h-48 bg-zinc-900 overflow-hidden">
-            <img src="https://6ad81706d9feb8b36628d0c8.imgix.net/sandbox/1792600523635_1491033942356209843_6942378462911671642_6f644ecf6e0ac5af2ebb09955b16e786.jpg?auto=format&fit=crop&w=800&q=80" 
-                 alt="Golden Wood Interior" 
-                 class="w-full h-full object-cover opacity-80 brightness-90"
-                 onerror="this.src='https://placehold.co/800x400/09090B/F59E0B?text=GOLDEN+WOOD'"/>
-            <div class="absolute inset-0 bg-gradient-to-t from-[#0D0D11] via-[#0D0D11]/40 to-transparent"></div>
-        </div>
-
-        <!-- Profile Details Section with Full Circular Avatar floating -->
-        <div class="relative pt-16 pb-3 px-6 text-center bg-[#0D0D11]">
-            <!-- Full Circular Avatar with Crisp White Border -->
-            <div class="absolute -top-16 left-1/2 -translate-x-1/2 z-20">
-                <div class="w-32 h-32 rounded-full border-4 border-white shadow-2xl overflow-hidden bg-zinc-800 flex items-center justify-center">
-                    <img src="https://6ad81706d9feb8b36628d0c8.imgix.net/sandbox/1792601899874_1491033942356209843_6942378462911671642_0c21dd40435c44f3912709cd8bc944fa.jpg?auto=format&fit=crop&w=400&q=80" 
-                         alt="Từ Anh Vũ" 
-                         class="w-full h-full object-cover object-top"
-                         onerror="this.src='https://placehold.co/300x300/18181b/F59E0B?text=Từ+Anh+Vũ'"/>
-                </div>
-            </div>
-
-            <!-- Light/Sleek Name Font with Gold Accent -->
-            <h2 class="text-2xl sm:text-3xl font-light text-amber-400 uppercase leading-tight tracking-[0.18em]">
-                TỪ ANH VŨ
-            </h2>
-            <p class="text-[10px] font-medium text-amber-300/80 tracking-[0.25em] mt-1 font-sans uppercase">
-                Quản Lý Kỹ Thuật
-            </p>
-        </div>
-
-        <!-- Primary Contact Buttons -->
-        <div class="px-4 py-3 bg-[#0D0D11] border-y border-zinc-800/80">
-            <div class="grid grid-cols-4 gap-2 max-w-sm mx-auto text-center">
-                <!-- Phone Call Button -->
-                <a href="tel:0931597957" class="group flex flex-col items-center">
-                    <div class="w-13 h-13 sm:w-14 sm:h-14 rounded-2xl bg-[#52B043] hover:bg-[#439635] text-white flex items-center justify-center shadow-lg shadow-emerald-900/30 mb-1.5 btn-action p-2.5 overflow-hidden">
-                        <svg viewBox="0 0 100 100" class="w-full h-full text-white" fill="currentColor">
-                            <path d="M22,30 C20,32 20,40 32,58 C44,76 56,82 62,80 C67,78 72,70 70,64 C68,58 58,54 53,57 C48,60 46,60 40,52 C34,44 36,42 41,38 C46,34 44,24 38,21 C32,18 24,28 22,30 Z"/>
-                            <path d="M52 22 A 28 28 0 0 1 78 48" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round"/>
-                            <path d="M52 34 A 16 16 0 0 1 66 48" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round"/>
-                        </svg>
-                    </div>
-                    <span class="text-[10px] sm:text-[11px] text-zinc-300 font-semibold truncate w-full">0931 597 957</span>
-                </a>
-
-                <!-- Zalo Button -->
-                <a href="https://zalo.me/0931597957" target="_blank" class="group flex flex-col items-center">
-                    <div class="w-13 h-13 sm:w-14 sm:h-14 rounded-2xl bg-[#0068FF] hover:bg-[#0052cc] text-white flex items-center justify-center shadow-lg shadow-blue-900/30 mb-1.5 btn-action p-2 overflow-hidden">
-                        <svg viewBox="0 0 100 100" class="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect width="100" height="100" rx="28" fill="#0068FF"/>
-                            <path d="M 18,22 C 18,16 23,12 30,12 L 82,12 C 88,12 92,16 92,22 L 92,70 C 92,76 88,80 82,80 L 32,80 L 18,90 L 22,76 C 19,74 18,71 18,67 Z" fill="#FFFFFF"/>
-                            <text x="56" y="58" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="28" fill="#0068FF" text-anchor="middle" letter-spacing="-1">Zalo</text>
-                        </svg>
-                    </div>
-                    <span class="text-[10px] sm:text-[11px] text-zinc-300 font-semibold truncate w-full">0931 597 957</span>
-                </a>
-
-                <!-- Gmail Button -->
-                <a href="mailto:tuanhvuhp85@gmail.com" class="group flex flex-col items-center">
-                    <div class="w-13 h-13 sm:w-14 sm:h-14 rounded-2xl bg-zinc-900 border border-zinc-700/80 hover:bg-zinc-800 flex items-center justify-center shadow-lg shadow-zinc-950/50 mb-1.5 btn-action p-2 overflow-hidden">
-                        <svg viewBox="0 0 100 100" class="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="8" y="16" width="84" height="68" rx="14" fill="#EA4335"/>
-                            <path d="M 16,22 L 84,22 L 84,78 L 16,78 Z" fill="#E0E0E0"/>
-                            <path d="M 18,24 L 50,54 L 82,24 L 82,76 L 18,76 Z" fill="#F2F2F2"/>
-                            <path d="M 16,20 L 50,48 L 84,20 L 84,32 L 50,60 L 16,32 Z" fill="#EA4335"/>
-                            <path d="M 16,20 L 30,20 L 30,76 L 16,76 Z" fill="#DB4437"/>
-                            <path d="M 70,20 L 84,20 L 84,76 L 70,76 Z" fill="#DB4437"/>
-                            <path d="M 16,20 L 50,48 L 30,20 Z" fill="#C5221F"/>
-                            <path d="M 84,20 L 50,48 L 70,20 Z" fill="#C5221F"/>
-                        </svg>
-                    </div>
-                    <span class="text-[9px] sm:text-[10px] text-zinc-300 font-semibold truncate w-full px-0.5">tuanhvuhp85</span>
-                </a>
-
-                <!-- Facebook Fanpage -->
-                <a href="https://www.facebook.com/profile.php?id=100082982486486" target="_blank" class="group flex flex-col items-center">
-                    <div class="w-13 h-13 sm:w-14 sm:h-14 rounded-2xl bg-[#1877F2] hover:bg-[#166fe5] text-white flex items-center justify-center text-2xl shadow-lg shadow-blue-900/40 mb-1.5 btn-action">
-                        <i class="fa-brands fa-facebook-f"></i>
-                    </div>
-                    <span class="text-[9px] sm:text-[10px] text-zinc-300 font-semibold truncate w-full px-0.5">Golden Wood</span>
-                </a>
-            </div>
-        </div>
-
-        <!-- Detailed Information & Services -->
-        <div class="px-5 py-4 space-y-3 bg-[#0A0A0E] flex-1">
+        <!-- Scrollable Content Area -->
+        <div class="flex-1 overflow-y-auto flex flex-col justify-between">
             
-            <!-- Address Card -->
-            <div class="flex items-center gap-3 p-3 rounded-2xl bg-zinc-900/90 border border-zinc-800 shadow-sm hover:border-amber-500/40 transition-colors">
-                <div class="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-400 flex items-center justify-center shrink-0">
-                    <i class="fa-solid fa-map-location-dot text-base"></i>
-                </div>
-                <div class="text-xs overflow-hidden">
-                    <div class="text-[10px] uppercase font-bold text-zinc-400 tracking-wider">VPGD và Nhà máy sản xuất</div>
-                    <div class="font-semibold text-zinc-100 truncate">45/84 Dân Lập, Lê Chân, Hải Phòng</div>
-                </div>
-            </div>
-
-            <!-- Profile Portfolio Card -->
-            <div class="flex items-center justify-between gap-2 p-3 rounded-2xl bg-gradient-to-r from-zinc-900 via-amber-950/40 to-zinc-900 border border-amber-500/30 text-white shadow-md">
-                <div class="flex items-center gap-3 overflow-hidden">
-                    <div class="w-10 h-10 rounded-xl bg-amber-500/20 border border-amber-400/30 text-amber-400 flex items-center justify-center shrink-0">
-                        <i class="fa-solid fa-file-pdf text-lg"></i>
-                    </div>
-                    <div class="text-xs overflow-hidden">
-                        <div class="text-[10px] uppercase font-bold text-amber-400 tracking-wider">Hồ sơ năng lực</div>
-                        <div class="font-bold text-zinc-100 truncate">Golden Wood Portfolio</div>
-                    </div>
-                </div>
-
-                <a id="portfolioLink" href="https://drive.google.com/file/d/1lysz-A2LXi8cxgNtJ-acToK3Dk7QQ3u2/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="shrink-0 gold-gradient-btn text-zinc-950 text-[11px] font-extrabold px-3.5 py-2 rounded-xl shadow-lg shadow-amber-500/20 hover:brightness-110 active:scale-95 transition-all flex items-center gap-1.5">
-                    <span>MỞ PROFILE</span>
-                    <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-                </a>
-            </div>
-
-            <!-- Services Provided Section -->
-            <div class="p-4 rounded-2xl bg-zinc-900/90 border border-zinc-800 shadow-sm">
-                <div class="text-[11px] uppercase font-extrabold tracking-wider text-amber-400 mb-3 flex items-center gap-2">
-                    <i class="fa-solid fa-wand-magic-sparkles text-amber-400"></i>
-                    <span>Dịch Vụ Cung Cấp</span>
-                </div>
-                <div class="space-y-2">
-                    <!-- Service 1 -->
-                    <div class="flex items-center justify-between gap-2 p-2.5 rounded-xl bg-zinc-950 border border-zinc-800/80">
-                        <div class="flex items-center gap-2.5 text-xs font-semibold text-zinc-200 overflow-hidden">
-                            <span class="w-2.5 h-2.5 rounded-full bg-amber-400 shrink-0 shadow-sm shadow-amber-400"></span>
-                            <span class="truncate">Xây nhà trọn gói</span>
+            <!-- Header Section -->
+            <div>
+                <!-- Brand Header Bar -->
+                <div class="px-4 py-2.5 bg-zinc-950/90 backdrop-blur-md sticky top-0 z-20 flex justify-between items-center border-b border-zinc-800/80">
+                    <div class="flex items-center gap-2.5">
+                        <!-- Logo Icon -->
+                        <div class="w-8 h-8 rounded-lg bg-amber-500/20 border border-amber-500/40 flex items-center justify-center p-1 shrink-0">
+                            <svg viewBox="0 0 100 100" class="w-full h-full text-amber-400" fill="none" stroke="currentColor" stroke-width="8" stroke-linejoin="round" stroke-linecap="round">
+                                <polygon points="50,5 92,28 92,72 50,95 8,72 8,28" />
+                                <line x1="50" y1="5" x2="50" y2="50" />
+                                <line x1="92" y1="28" x2="50" y2="50" />
+                                <line x1="8" y1="28" x2="50" y2="50" />
+                                <polygon points="50,30 72,42 50,54 28,42" stroke-width="6" fill="#f59e0b"/>
+                            </svg>
                         </div>
-                        <a href="https://drive.google.com/drive/folders/12XlDyio5Xvs2aJBoZt1JTTkDcDEfXCMj?usp=drive_link" target="_blank" rel="noopener noreferrer" class="shrink-0 text-[10px] font-bold text-amber-400 hover:text-amber-300 bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/30 px-2.5 py-1 rounded-lg transition-all flex items-center gap-1">
-                            <i class="fa-solid fa-image text-xs"></i>
-                            <span>Xem hình ảnh</span>
-                            <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                        <div>
+                            <h1 class="font-extrabold text-amber-400 tracking-wider text-xs font-heading leading-tight">GOLDEN WOOD</h1>
+                            <p class="text-[9px] text-zinc-400 font-medium tracking-widest uppercase">Nội Thất & Kiến Trúc</p>
+                        </div>
+                    </div>
+
+                    <!-- Location Link -->
+                    <a href="https://maps.google.com/?q=45/84+Dân+Lập,+Lê+Chân,+Hải+Phòng" target="_blank" class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-zinc-900 hover:bg-zinc-800 text-zinc-300 border border-zinc-800 text-right transition-colors btn-press">
+                        <i class="fa-solid fa-location-dot text-amber-400 text-[10px]"></i>
+                        <span class="text-[10px] font-semibold text-zinc-200">Hải Phòng</span>
+                    </a>
+                </div>
+
+                <!-- Banner Image -->
+                <div class="relative w-full h-32 sm:h-36 bg-zinc-900 overflow-hidden">
+                    <img src="https://6ad81706d9feb8b36628d0c8.imgix.net/sandbox/1792600523635_1491033942356209843_6942378462911671642_6f644ecf6e0ac5af2ebb09955b16e786.jpg?auto=format&fit=crop&w=800&q=80" 
+                         alt="Golden Wood Interior" 
+                         class="w-full h-full object-cover brightness-90"
+                         onerror="this.src='https://placehold.co/800x400/0A0A0D/F59E0B?text=GOLDEN+WOOD'"/>
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#0A0A0D] via-[#0A0A0D]/50 to-transparent"></div>
+                </div>
+
+                <!-- Profile Info -->
+                <div class="relative pt-11 pb-2 px-4 text-center">
+                    <!-- Profile Avatar -->
+                    <div class="absolute -top-12 left-1/2 -translate-x-1/2 z-10">
+                        <div class="w-24 h-24 sm:w-26 sm:h-26 rounded-full border-2 border-amber-400/80 p-0.5 bg-zinc-950 gold-border-glow">
+                            <img src="https://6ad81706d9feb8b36628d0c8.imgix.net/sandbox/1792601899874_1491033942356209843_6942378462911671642_0c21dd40435c44f3912709cd8bc944fa.jpg" 
+                                 alt="Từ Anh Vũ" 
+                                 class="w-full h-full object-cover object-top rounded-full"
+                                 onerror="this.src='https://placehold.co/300x300/18181b/F59E0B?text=Tu+Anh+Vu'"/>
+                        </div>
+                    </div>
+
+                    <h2 class="text-xl sm:text-2xl font-black text-amber-400 font-heading tracking-wider uppercase leading-tight">
+                        TỪ ANH VŨ
+                    </h2>
+                    <p class="text-[10px] sm:text-[11px] font-bold text-amber-200/80 tracking-widest uppercase mt-0.5">
+                        Quản Lý Kỹ Thuật
+                    </p>
+                </div>
+
+                <!-- Primary Action Buttons (Call, Zalo, Fanpage) -->
+                <div class="px-4 py-2.5">
+                    <div class="grid grid-cols-3 gap-2.5 max-w-xs mx-auto">
+                        <!-- Phone Call -->
+                        <a href="tel:0931597957" class="flex flex-col items-center btn-press group">
+                            <div class="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-700 text-white flex items-center justify-center shadow-lg shadow-emerald-950/40 mb-1 p-2.5">
+                                <i class="fa-solid fa-phone text-base group-hover:scale-110 transition-transform"></i>
+                            </div>
+                            <span class="text-[10px] text-zinc-300 font-bold truncate w-full text-center">0931 597 957</span>
+                        </a>
+
+                        <!-- Zalo -->
+                        <a href="https://zalo.me/0931597957" target="_blank" class="flex flex-col items-center btn-press group">
+                            <div class="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 text-white flex items-center justify-center shadow-lg shadow-blue-950/40 mb-1 p-2">
+                                <span class="font-black text-xs tracking-tighter group-hover:scale-110 transition-transform">Zalo</span>
+                            </div>
+                            <span class="text-[10px] text-zinc-300 font-bold truncate w-full text-center">0931 597 957</span>
+                        </a>
+
+                        <!-- Fanpage -->
+                        <a href="https://www.facebook.com/profile.php?id=100082982486486" target="_blank" class="flex flex-col items-center btn-press group">
+                            <div class="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-800 text-white flex items-center justify-center shadow-lg shadow-indigo-950/40 mb-1 p-2.5">
+                                <i class="fa-brands fa-facebook-f text-base group-hover:scale-110 transition-transform"></i>
+                            </div>
+                            <span class="text-[10px] text-zinc-300 font-bold truncate w-full text-center">Fanpage</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Detailed Information Cards -->
+                <div class="px-4 py-2 space-y-2">
+                    
+                    <!-- Address Card -->
+                    <div class="flex items-center gap-2.5 p-2.5 rounded-xl bg-zinc-900/80 border border-zinc-800/80">
+                        <div class="w-8 h-8 rounded-lg bg-amber-500/10 border border-amber-500/20 text-amber-400 flex items-center justify-center shrink-0">
+                            <i class="fa-solid fa-map-location-dot text-xs"></i>
+                        </div>
+                        <div class="text-xs overflow-hidden">
+                            <div class="text-[9px] uppercase font-bold text-zinc-400 tracking-wider">VPGD & Nhà máy sản xuất</div>
+                            <div class="font-semibold text-zinc-200 text-[11px] truncate">45/84 Dân Lập, Lê Chân, Hải Phòng</div>
+                        </div>
+                    </div>
+
+                    <!-- Company Portfolio PDF Link -->
+                    <div class="flex items-center justify-between gap-2 p-2.5 rounded-xl bg-gradient-to-r from-zinc-900 via-amber-950/30 to-zinc-900 border border-amber-500/30">
+                        <div class="flex items-center gap-2.5 overflow-hidden">
+                            <div class="w-8 h-8 rounded-lg bg-amber-500/20 border border-amber-400/30 text-amber-400 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-file-pdf text-sm"></i>
+                            </div>
+                            <div class="text-xs overflow-hidden">
+                                <div class="text-[9px] uppercase font-bold text-amber-400 tracking-wider">Hồ sơ năng lực</div>
+                                <div class="font-bold text-zinc-100 text-[11px] truncate">Golden Wood Portfolio</div>
+                            </div>
+                        </div>
+
+                        <a href="https://drive.google.com/file/d/1lysz-A2LXi8cxgNtJ-acToK3Dk7QQ3u2/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="shrink-0 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-zinc-950 text-[10px] font-extrabold px-3 py-1.5 rounded-lg shadow-md btn-press flex items-center gap-1">
+                            <span>XEM PROFILE</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-[8px]"></i>
                         </a>
                     </div>
 
-                    <!-- Service 2 -->
-                    <div class="flex items-center justify-between gap-2 p-2.5 rounded-xl bg-zinc-950 border border-zinc-800/80">
-                        <div class="flex items-center gap-2.5 text-xs font-semibold text-zinc-200 overflow-hidden">
-                            <span class="w-2.5 h-2.5 rounded-full bg-yellow-500 shrink-0 shadow-sm shadow-yellow-500"></span>
-                            <span class="truncate">Thi công nội thất</span>
+                    <!-- Services Section -->
+                    <div class="p-3 rounded-xl bg-zinc-900/80 border border-zinc-800/80 space-y-2">
+                        <div class="text-[10px] uppercase font-extrabold tracking-wider text-amber-400 flex items-center gap-1.5">
+                            <i class="fa-solid fa-wand-magic-sparkles text-amber-400"></i>
+                            <span>Dịch Vụ Cung Cấp</span>
                         </div>
-                        <a href="https://drive.google.com/drive/folders/1BUsORKT895rOAd1fzoPcQi4L4R1iTN01?usp=sharing" target="_blank" rel="noopener noreferrer" class="shrink-0 text-[10px] font-bold text-amber-400 hover:text-amber-300 bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/30 px-2.5 py-1 rounded-lg transition-all flex items-center gap-1">
-                            <i class="fa-solid fa-image text-xs"></i>
-                            <span>Xem hình ảnh</span>
-                            <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
-                        </a>
+
+                        <div class="space-y-1.5">
+                            <!-- Service 1 -->
+                            <div class="flex items-center justify-between gap-2 p-2 rounded-lg bg-zinc-950/70 border border-zinc-800/50">
+                                <div class="flex items-center gap-2 text-[11px] font-semibold text-zinc-200 truncate">
+                                    <span class="w-2 h-2 rounded-full bg-amber-400 shrink-0"></span>
+                                    <span class="truncate">Xây nhà trọn gói</span>
+                                </div>
+                                <a href="https://drive.google.com/drive/folders/12XlDyio5Xvs2aJBoZt1JTTkDcDEfXCMj?usp=drive_link" target="_blank" rel="noopener noreferrer" class="shrink-0 text-[9px] font-bold text-amber-400 bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/30 px-2 py-1 rounded-md transition-colors flex items-center gap-1 btn-press">
+                                    <i class="fa-solid fa-images text-[9px]"></i>
+                                    <span>Hình ảnh</span>
+                                    <i class="fa-solid fa-arrow-up-right-from-square text-[8px]"></i>
+                                </a>
+                            </div>
+
+                            <!-- Service 2 -->
+                            <div class="flex items-center justify-between gap-2 p-2 rounded-lg bg-zinc-950/70 border border-zinc-800/50">
+                                <div class="flex items-center gap-2 text-[11px] font-semibold text-zinc-200 truncate">
+                                    <span class="w-2 h-2 rounded-full bg-amber-500 shrink-0"></span>
+                                    <span class="truncate">Thi công nội thất</span>
+                                </div>
+                                <a href="https://drive.google.com/drive/folders/1PybL7n_bM5hWL1jfOxHDhdVp4W_pCnx6?usp=sharing" target="_blank" rel="noopener noreferrer" class="shrink-0 text-[9px] font-bold text-amber-400 bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/30 px-2 py-1 rounded-md transition-colors flex items-center gap-1 btn-press">
+                                    <i class="fa-solid fa-images text-[9px]"></i>
+                                    <span>Hình ảnh</span>
+                                    <i class="fa-solid fa-arrow-up-right-from-square text-[8px]"></i>
+                                </a>
+                            </div>
+
+                            <!-- Service 3 -->
+                            <div class="flex items-center justify-between gap-2 p-2 rounded-lg bg-zinc-950/70 border border-zinc-800/50">
+                                <div class="flex items-center gap-2 text-[11px] font-semibold text-zinc-200 truncate">
+                                    <span class="w-2 h-2 rounded-full bg-amber-600 shrink-0"></span>
+                                    <span class="truncate">Thiết kế nội ngoại thất</span>
+                                </div>
+                                <a href="https://drive.google.com/drive/folders/1BUsORKT895rOAd1fzoPcQi4L4R1iTN01?usp=sharing" target="_blank" rel="noopener noreferrer" class="shrink-0 text-[9px] font-bold text-amber-400 bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/30 px-2 py-1 rounded-md transition-colors flex items-center gap-1 btn-press">
+                                    <i class="fa-solid fa-images text-[9px]"></i>
+                                    <span>Hình ảnh</span>
+                                    <i class="fa-solid fa-arrow-up-right-from-square text-[8px]"></i>
+                                </a>
+                            </div>
+                        </div>
                     </div>
 
-                    <!-- Service 3 -->
-                    <div class="flex items-center justify-between gap-2 p-2.5 rounded-xl bg-zinc-950 border border-zinc-800/80">
-                        <div class="flex items-center gap-2.5 text-xs font-semibold text-zinc-200 overflow-hidden">
-                            <span class="w-2.5 h-2.5 rounded-full bg-amber-600 shrink-0 shadow-sm shadow-amber-600"></span>
-                            <span class="truncate">Thiết kế nội ngoại thất</span>
-                        </div>
-                        <a href="https://drive.google.com/drive/folders/1BUsORKT895rOAd1fzoPcQi4L4R1iTN01?usp=sharing" target="_blank" rel="noopener noreferrer" class="shrink-0 text-[10px] font-bold text-amber-400 hover:text-amber-300 bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/30 px-2.5 py-1 rounded-lg transition-all flex items-center gap-1">
-                            <i class="fa-solid fa-image text-xs"></i>
-                            <span>Xem hình ảnh</span>
-                            <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
-                        </a>
+                    <!-- Bottom Action Buttons: Save Contact & Share QR -->
+                    <div class="grid grid-cols-2 gap-2 pt-1 pb-2">
+                        <button onclick="downloadVCard()" class="flex items-center justify-center gap-1.5 py-2.5 px-3 bg-gradient-to-r from-amber-500 to-amber-600 text-zinc-950 rounded-xl font-extrabold text-xs shadow-md btn-press">
+                            <i class="fa-solid fa-address-book text-sm"></i>
+                            <span>Lưu Danh Bạ</span>
+                        </button>
+                        
+                        <button onclick="openQRModal()" class="flex items-center justify-center gap-1.5 py-2.5 px-3 bg-zinc-900 text-amber-400 hover:bg-zinc-850 rounded-xl font-bold text-xs border border-amber-500/40 shadow-sm btn-press">
+                            <i class="fa-solid fa-qrcode text-sm"></i>
+                            <span>Mã QR Chia Sẻ</span>
+                        </button>
                     </div>
+
                 </div>
             </div>
 
-            <!-- Digital VCard Actions (QR Code Only) -->
-            <div class="pt-1">
-                <button onclick="openQRModal()" class="w-full flex items-center justify-center gap-2 py-3 px-3 bg-zinc-900 text-amber-400 hover:bg-zinc-800 rounded-xl font-bold text-xs border border-amber-500/40 shadow-sm active:scale-95 transition-all">
-                    <i class="fa-solid fa-qrcode text-amber-400 text-sm"></i>
-                    <span>Mã QR Chia Sẻ</span>
-                </button>
+            <!-- Footer -->
+            <div class="bg-zinc-950 text-zinc-500 py-2.5 px-4 text-center text-[10px] font-medium border-t border-zinc-900 shrink-0 flex items-center justify-between">
+                <span>© Golden Wood</span>
+                <span class="text-amber-500/80 font-semibold">Nội Thất & Kiến Trúc</span>
             </div>
+
         </div>
 
-        <!-- Footer Bar -->
-        <div class="bg-zinc-950 text-zinc-400 py-3 px-4 text-center text-xs flex items-center justify-center gap-2 border-t border-zinc-800/80">
-            <span class="font-bold tracking-widest text-amber-400 uppercase">Golden Wood</span>
+        <!-- Phone Bottom Bar Indicator (Desktop preview only) -->
+        <div class="hidden sm:flex bg-black pb-2 pt-1 justify-center shrink-0">
+            <div class="w-28 h-1 bg-zinc-700 rounded-full"></div>
         </div>
 
-        <!-- Phone Bottom Bar Indicator -->
-        <div class="bg-black pb-2 pt-1 flex justify-center">
-            <div class="w-32 h-1 bg-zinc-700 rounded-full"></div>
-        </div>
     </div>
 
     <!-- Modal QR Code -->
-    <div id="qrModal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-zinc-900 rounded-3xl p-6 max-w-sm w-full text-center relative shadow-2xl border border-zinc-800">
-            <button onclick="closeQRModal()" class="absolute top-4 right-4 text-zinc-400 hover:text-white w-8 h-8 rounded-full bg-zinc-800 flex items-center justify-center transition-colors">
-                <i class="fa-solid fa-xmark text-base"></i>
+    <div id="qrModal" class="fixed inset-0 bg-black/85 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-zinc-900 rounded-3xl p-5 max-w-xs w-full text-center relative shadow-2xl border border-zinc-800">
+            <button onclick="closeQRModal()" class="absolute top-3 right-3 text-zinc-400 hover:text-white w-7 h-7 rounded-full bg-zinc-800 flex items-center justify-center transition-colors">
+                <i class="fa-solid fa-xmark text-sm"></i>
             </button>
-            <h3 class="font-extrabold text-amber-400 text-lg uppercase font-heading mb-1">Mã QR Danh Thiếp</h3>
-            <p class="text-xs text-zinc-400 mb-5">Quét mã để lưu danh thiếp của Mr. Từ Anh Vũ</p>
             
-            <div class="bg-white p-4 rounded-2xl inline-block border border-zinc-200 mb-4 shadow-xl">
+            <h3 class="font-extrabold text-amber-400 text-base font-heading mb-0.5">MÃ QR DANH THIẾP</h3>
+            <p class="text-[11px] text-zinc-400 mb-4">Quét mã bằng điện thoại để lưu liên hệ</p>
+            
+            <div class="bg-white p-3.5 rounded-2xl inline-block border border-zinc-200 mb-3 shadow-xl">
                 <div id="qrcode" class="flex justify-center"></div>
             </div>
 
-            <p class="text-xs font-bold text-white">Từ Anh Vũ - Quản Lý Kỹ Thuật</p>
-            <p class="text-[10px] font-bold text-amber-400">GOLDEN WOOD</p>
+            <p class="text-xs font-bold text-zinc-100">Từ Anh Vũ - 0931 597 957</p>
+            <p class="text-[10px] font-bold text-amber-400 uppercase tracking-wider mt-0.5">GOLDEN WOOD</p>
         </div>
     </div>
 
+    <!-- JavaScript Functions -->
     <script>
-        function generateVCard() {
-            return `BEGIN:VCARD
+        // Generate vCard payload
+        function downloadVCard() {
+            const vcardData = 
+`BEGIN:VCARD
 VERSION:3.0
-N:Vũ;Từ;Anh;;
+N:Từ;Anh Vũ;;;
 FN:Từ Anh Vũ
-ORG:Golden Wood
+ORG:Golden Wood - Nội Thất & Kiến Trúc
 TITLE:Quản Lý Kỹ Thuật
 TEL;TYPE=CELL,VOICE:0931597957
-EMAIL;TYPE=WORK,INTERNET:tuanhvuhp85@gmail.com
 ADR;TYPE=WORK:;;45/84 Dân Lập, Lê Chân;Hải Phòng;;Việt Nam
-NOTE:Thương hiệu Golden Wood - Nội Thất & Kiến Trúc
+URL:https://www.facebook.com/profile.php?id=100082982486486
+NOTE:Golden Wood - Chuyên Xây nhà trọn gói, Thi công nội thất & Thiết kế nội ngoại thất
 END:VCARD`;
-        }
 
-        function downloadVCard() {
-            const vcardData = generateVCard();
             const blob = new Blob([vcardData], { type: 'text/vcard;charset=utf-8;' });
             const url = URL.createObjectURL(blob);
             const link = document.createElement('a');
@@ -371,8 +358,8 @@ END:VCARD`;
                 qrContainer.innerHTML = '';
                 qrcodeObj = new QRCode(qrContainer, {
                     text: window.location.href || 'https://goldenwood.vn',
-                    width: 180,
-                    height: 180,
+                    width: 170,
+                    height: 170,
                     colorDark: "#09090B",
                     colorLight: "#ffffff",
                     correctLevel: QRCode.CorrectLevel.H
